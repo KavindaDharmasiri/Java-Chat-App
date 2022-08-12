@@ -3,9 +3,7 @@ package controller;
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
-import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -16,7 +14,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.Socket;
@@ -34,7 +31,7 @@ public class ClientFormController {
     public void initialize() throws IOException {
         stage.close();
 
-        new Thread(() ->{
+        new Thread(() -> {
             try {
                 socket1 = new Socket("localhost", 5001);
 
@@ -43,7 +40,7 @@ public class ClientFormController {
                 while (true) {
                     setImg(socket1);
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }).start();
@@ -54,7 +51,6 @@ public class ClientFormController {
                 InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
                 String record = bufferedReader.readLine();
-                System.out.println(record);
 
                 setText(record);
 
@@ -62,7 +58,6 @@ public class ClientFormController {
                     if (!record.equals("exit")) {
                         BufferedReader bufferedReader1 = new BufferedReader(inputStreamReader);
                         String record1 = bufferedReader1.readLine();
-                        System.out.println(record1);
 
                         setText(record1);
                     }
@@ -76,12 +71,12 @@ public class ClientFormController {
 
     private void setText(String record) {
         Text t = new Text("Sameera \t: ");
-        Text t1 = new Text(record+"\n\n");
+        Text t1 = new Text(record + "\n\n");
 
         t.setStyle("-fx-font: normal bold 15px 'serif'; -fx-font-style:bold;-fx-stroke-with: 10px;-fx-fill: green;");
         t1.setStyle("-fx-font: normal bold 15px 'serif'; -fx-font-style:bold;-fx-stroke-with: 10px;-fx-fill: black;");
 
-        Platform.runLater(()->txtFlow.getChildren().addAll(t,t1));
+        Platform.runLater(() -> txtFlow.getChildren().addAll(t, t1));
         scroll.setVvalue(1.0);
         return;
     }
@@ -94,23 +89,15 @@ public class ClientFormController {
 
         InputStream inputStream = socket1.getInputStream();
 
-        System.out.println("cli");
-        System.out.println("Reading: " + System.currentTimeMillis());
-
         byte[] sizeAr = new byte[4];
         inputStream.read(sizeAr);
 
         int size = ByteBuffer.wrap(sizeAr).asIntBuffer().get();
 
-        System.out.println("sze "+size);
-
         byte[] imageAr = new byte[size];
-        System.out.println(imageAr);
 
         inputStream.read(imageAr);
-
         BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(imageAr));
-
         WritableImage image = SwingFXUtils.toFXImage(bufferedImage, null);
 
         ImageView imageView = new ImageView(image);
@@ -119,27 +106,25 @@ public class ClientFormController {
         imageView.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);");
 
         Text t1 = new Text("\n\n");
-
-        Text t12 = new Text("Sameera"+" \t: ");
+        Text t12 = new Text("Sameera" + " \t: ");
 
         t12.setStyle("-fx-font: normal bold 15px 'serif'; -fx-font-style:bold;-fx-stroke-with: 10px;-fx-fill: green;");
-        Platform.runLater(() -> txtFlow.getChildren().addAll(t12,imageView, t1));
+        Platform.runLater(() -> txtFlow.getChildren().addAll(t12, imageView, t1));
         scroll.setVvalue(1.0);
         return;
     }
 
     public void sendOnAction(ActionEvent actionEvent) throws IOException {
-        /* new message*/
-        System.out.println(name);
-        Text t1 = new Text(name+" \t: ");
-        Text t = new Text(txtClientMessage.getText()+"\n\n");
+
+        Text t1 = new Text(name + " \t: ");
+        Text t = new Text(txtClientMessage.getText() + "\n\n");
         t1.setStyle("-fx-font: normal bold 15px 'serif'; -fx-font-style:bold;-fx-stroke-with: 10px;-fx-fill: blue;");
         t.setStyle("-fx-font: normal bold 15px 'serif'; -fx-font-style:bold;-fx-stroke-with: 10px;-fx-fill: black;");
-        txtFlow.getChildren().addAll(t1,t);
+        txtFlow.getChildren().addAll(t1, t);
         scroll.setVvalue(1.0);
 
         PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
-        printWriter.println(name+" : "+txtClientMessage.getText());
+        printWriter.println(name + " : " + txtClientMessage.getText());
         printWriter.flush();
         txtClientMessage.setText("");
     }
@@ -151,11 +136,7 @@ public class ClientFormController {
         chooser.getExtensionFilters().addAll(exxtFilterJPG, exxtFilterPNG);
         File file = chooser.showOpenDialog(null);
         BufferedImage bufferedImage = ImageIO.read(file);
-        WritableImage image = SwingFXUtils.toFXImage(bufferedImage,null);
-
-
-
-
+        WritableImage image = SwingFXUtils.toFXImage(bufferedImage, null);
 
         OutputStream outputStream = socket1.getOutputStream();
 
@@ -168,9 +149,6 @@ public class ClientFormController {
 
         byte[] size = ByteBuffer.allocate(4).putInt(byteArrayOutputStream.size()).array();
 
-        System.out.println("size "+size);
-        System.out.println("araray " + byteArrayOutputStream.toByteArray()  );
-
         outputStream.write(size);
         outputStream.write(byteArrayOutputStream.toByteArray());
         outputStream.flush();
@@ -181,11 +159,11 @@ public class ClientFormController {
         imageView.setFitWidth(200);
         imageView.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);");
 
-        Text t = new Text(name+" \t: ");
+        Text t = new Text(name + " \t: ");
 
         Text t1 = new Text("\n\n");
         t.setStyle("-fx-font: normal bold 15px 'serif'; -fx-font-style:bold;-fx-stroke-with: 10px;-fx-fill: blue;");
-        txtFlow.getChildren().addAll( t,imageView , t1 );
+        txtFlow.getChildren().addAll(t, imageView, t1);
         scroll.setVvalue(1.0);
 
     }
