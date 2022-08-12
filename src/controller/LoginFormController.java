@@ -37,7 +37,9 @@ public class LoginFormController {
         Scene scene = new Scene(load);
         Stage stage = new Stage();
         ClientFormController.name = txtUserName.getText();
+        ServerFormController.name = txtUserName.getText();
         stage.setScene(scene);
+        stage.setTitle("Client");
 
         stage.show();
 

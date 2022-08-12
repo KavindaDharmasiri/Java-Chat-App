@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="live Chat">
+    <output-path>$PROJECT_DIR$/out/artifacts/live_Chat</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="LoginInitializer" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="live_Chat.jar">
+        <element id="module-output" name="live Chat" />
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.emojione.EmojiOneView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
@@ -15,5 +16,6 @@
       <ScrollPane fx:id="scroll" layoutX="33.0" prefHeight="300.0" prefWidth="560.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
       <TextFlow fx:id="txtFlow" layoutX="20.0" prefHeight="293.0" prefWidth="556.0" />
       </ScrollPane>
+      <EmojiOneView layoutX="432.0" layoutY="362.0" />
    </children>
 </AnchorPane>
