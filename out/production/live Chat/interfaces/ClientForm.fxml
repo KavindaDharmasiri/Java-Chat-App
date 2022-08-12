@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.emojione.EmojiOneView?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClientFormController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #474ED2;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClientFormController">
    <children>
-      <TextField fx:id="txtClientMessage" layoutX="27.0" layoutY="340.0" prefHeight="36.0" prefWidth="464.0" AnchorPane.leftAnchor="20.0" />
-      <Button layoutX="500.0" layoutY="340.0" mnemonicParsing="false" onAction="#sendOnAction" prefHeight="36.0" prefWidth="81.0" style="-fx-background-color: #107EFE;" text="Send" textFill="#f8f8f8" AnchorPane.rightAnchor="20.0" />
-      <FontAwesomeIconView glyphName="CAMERA" layoutX="455.0" layoutY="362.0" onMouseClicked="#getPhoto" size="15" AnchorPane.bottomAnchor="33.85714244842529" />
-      <ScrollPane fx:id="scroll" layoutX="33.0" prefHeight="300.0" prefWidth="560.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
-      <TextFlow fx:id="txtFlow" layoutX="20.0" prefHeight="293.0" prefWidth="556.0" />
+      <ScrollPane fx:id="scroll" layoutX="33.0" prefHeight="300.0" prefWidth="560.0" style="-fx-background-radius: 15px;" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+      <TextFlow fx:id="txtFlow" disable="true" layoutX="20.0" prefHeight="298.0" prefWidth="558.0" style="-fx-background-color: #B2B6FF; -fx-background-radius: 15px;" />
       </ScrollPane>
+      <AnchorPane layoutX="20.0" layoutY="328.0" prefHeight="61.0" prefWidth="202.0" style="-fx-background-color: white; -fx-background-radius: 15px;" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="328.0">
+         <children>
+            <JFXTextField fx:id="txtClientMessage" layoutX="14.0" layoutY="21.0" promptText="Type Your Message Here.." AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="124.0" />
+            <FontAwesomeIconView glyphName="CAMERA" layoutX="442.0" layoutY="22.0" onMouseClicked="#getPhoto" size="15" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="105.0" />
+            <JFXButton buttonType="RAISED" layoutX="474.0" layoutY="13.0" onAction="#sendOnAction" prefHeight="36.0" prefWidth="83.0" style="-fx-background-color: #107EFE;" text="Send" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
 
    </children>
 </AnchorPane>

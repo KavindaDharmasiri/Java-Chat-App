@@ -115,7 +115,7 @@ public class ServerFormController {
         String name = rec1.split(":")[0];
         String record = rec1.split(":")[1];
 
-        Text t1 = new Text(name + " \t: ");
+        Text t1 = new Text(name + ": ");
         Text t = new Text(record + "\n\n");
 
         t.setStyle("-fx-font: normal bold 15px 'serif'; -fx-font-style:bold;-fx-stroke-with: 10px;-fx-fill: black;");
@@ -171,7 +171,7 @@ public class ServerFormController {
         imageView.setFitWidth(200);
         imageView.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);");
 
-        Text t = new Text("Sameera" + " : ");
+        Text t = new Text("Sameera" + " \t: ");
         Text t1 = new Text("\n\n");
         t.setStyle("-fx-font: normal bold 15px 'serif'; -fx-font-style:bold;-fx-stroke-with: 10px;-fx-fill: green;");
         txtFlow.getChildren().addAll(t, imageView, t1);
