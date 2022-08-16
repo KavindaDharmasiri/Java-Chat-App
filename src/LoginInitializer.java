@@ -22,6 +22,8 @@ public class LoginInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+
+
         primaryStage.setScene
                 (new Scene(FXMLLoader.load(getClass().getResource("interfaces/LoginForm.fxml"))));
         LoginFormController.stage1 = primaryStage;

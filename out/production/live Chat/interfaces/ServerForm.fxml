@@ -14,7 +14,7 @@
          <children>
             <JFXTextField fx:id="TXTServerMessage" layoutX="6.0" layoutY="10.0" prefHeight="36.0" prefWidth="424.0" promptText="Type Your Message Here.." AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="124.0" />
             <FontAwesomeIconView glyphName="CAMERA" layoutX="438.0" layoutY="26.0" onMouseClicked="#uploadImg" size="15" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="105.0" />
-            <JFXButton buttonType="RAISED" layoutX="489.0" layoutY="22.0" onAction="#sendMessage" prefHeight="36.0" prefWidth="63.0" style="-fx-background-color: #107EFE;" text="Send" textFill="WHITE" AnchorPane.bottomAnchor="13.0" AnchorPane.rightAnchor="32.0">
+            <JFXButton buttonType="RAISED" layoutX="489.0" layoutY="22.0" onAction="#sendMessage" prefHeight="36.0" prefWidth="83.0" style="-fx-background-color: #107EFE;" text="Send" textFill="WHITE" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="12.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

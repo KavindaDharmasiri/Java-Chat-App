@@ -27,8 +27,14 @@ public class ServerFormController {
     public TextFlow txtFlow;
     Socket accept = null;
     Socket socket1 = null;
+    int z, x = -1;
 
     public void initialize() {
+        System.out.println("awaoo");
+        setClient();
+    }
+
+    private void setClient() {
         new Thread(() -> {
             try {
                 ServerSocket serverSocket = new ServerSocket(5001);
@@ -52,6 +58,7 @@ public class ServerFormController {
 
                 System.out.println("Server started!");
                 accept = serverSocket.accept();
+
                 System.out.println("Client Connected!");
                 InputStreamReader inputStreamReader = new InputStreamReader(accept.getInputStream(), StandardCharsets.UTF_8);
 
